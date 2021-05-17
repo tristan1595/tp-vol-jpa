@@ -24,7 +24,7 @@ public class CompagnieAerienneVol {
 	private Vol vol;
 
 	public CompagnieAerienneVol() {
-		this(0, null, null, null);
+		super();
 	}
 	
 }
