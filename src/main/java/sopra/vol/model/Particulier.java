@@ -1,10 +1,17 @@
 package sopra.vol.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("person")
 public class Particulier extends Client {
+	@Column(name="first_name", length=100)
 	private String prenom;
 	
 	public Particulier() {
-		this(0, null, null);
+		super();
 	}
 
 	public Particulier(long id, String name, String prenom) {
