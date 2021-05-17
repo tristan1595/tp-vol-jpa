@@ -1,42 +1,90 @@
 package sopra.vol.model;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="flight")
 public class Vol {
-	private long id;
-	private Date dtDepart;
-	private Date dtArrivee;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Enumerated(EnumType.STRING)
+	@Column(name="flight_state")
 	private StatutVol statutVol;
+	@Column(name = "departure_date")
+	private Date dtDepart;
+	@Column(name = "arrival_date")
+	private Date dtArrivee;
+	@OneToOne
+	@JoinColumn(name = "departure_airport_code")
+	private Aeroport depart;
+	@OneToOne
+	@JoinColumn(name = "arrival_airport_code")
+	private Aeroport arrivee;
+	@Column(name = "number_places_available")
 	private int nbPlaceDispo;
-	private Aeroport aeroportArrivee;
-	private Aeroport aeroportDepart;
-	private List<Billet> billets;
-	private List<CompagnieAerienneVol> compagnieAerienneVol;
+	@OneToMany(mappedBy = "vol")
+	private List<Billet> billets = new ArrayList<>();
+	@OneToMany(mappedBy = "vol")
+	private List<CompagnieAerienneVol> compagnieAeriennes = new ArrayList<CompagnieAerienneVol>();
 	
 	public Vol() {
-		this(0, null, null, null, 0, null, null);
+		super();
 	}
-
-	public Vol(long id, Date dtDepart, Date dtArrivee, StatutVol statutVol, int nbPlaceDispo, Aeroport aeroportArrivee, Aeroport aeroportDepart) {
-		this.id = id;
+	
+	public Vol(StatutVol statutVol, Date dtDepart, Date dtArrivee, int nbPlaceDispo) {
+		super();
+		this.statutVol = statutVol;
 		this.dtDepart = dtDepart;
 		this.dtArrivee = dtArrivee;
-		this.statutVol = statutVol;
 		this.nbPlaceDispo = nbPlaceDispo;
-		this.aeroportArrivee = aeroportArrivee;
-		this.aeroportDepart = aeroportDepart;
-		this.billets = new ArrayList<Billet>();
-		this.compagnieAerienneVol = new ArrayList<CompagnieAerienneVol>();
 	}
-
-	public long getId() {
+	
+	public Vol(Long id, StatutVol statutVol, Date dtDepart, Date dtArrivee, int nbPlaceDispo) {
+		super();
+		this.id = id;
+		this.statutVol = statutVol;
+		this.dtDepart = dtDepart;
+		this.dtArrivee = dtArrivee;
+		this.nbPlaceDispo = nbPlaceDispo;
+	}
+	
+	
+	public Long getId() {
 		return id;
 	}
-
-	public void setId(long id) {
+	
+	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public StatutVol getStatutVol() {
+		return statutVol;
+	}
+
+	public void setStatutVol(StatutVol statutVol) {
+		this.statutVol = statutVol;
+	}
+
+	public List<Billet> getBillets() {
+		return billets;
+	}
+
+	public void setBillets(List<Billet> billets) {
+		this.billets = billets;
 	}
 
 	public Date getDtDepart() {
@@ -55,12 +103,20 @@ public class Vol {
 		this.dtArrivee = dtArrivee;
 	}
 
-	public StatutVol getStatutVol() {
-		return statutVol;
+	public Aeroport getDepart() {
+		return depart;
 	}
 
-	public void setStatutVol(StatutVol statutVol) {
-		this.statutVol = statutVol;
+	public void setDepart(Aeroport depart) {
+		this.depart = depart;
+	}
+
+	public Aeroport getArrivee() {
+		return arrivee;
+	}
+	
+	public void setArrivee(Aeroport arrivee) {
+		this.arrivee = arrivee;
 	}
 
 	public int getNbPlaceDispo() {
@@ -71,43 +127,12 @@ public class Vol {
 		this.nbPlaceDispo = nbPlaceDispo;
 	}
 
-	public Aeroport getAeroportArrivee() {
-		return aeroportArrivee;
+	public List<CompagnieAerienneVol> getCompagnieAeriennesVol() {
+		return compagnieAeriennes;
 	}
 
-	public void setAeroportArrivee(Aeroport aeroportArrivee) {
-		this.aeroportArrivee = aeroportArrivee;
+	public void setCompagnieAeriennesVol(List<CompagnieAerienneVol> compagnieAeriennes) {
+		this.compagnieAeriennes = compagnieAeriennes;
 	}
 
-	public Aeroport getAeroportDepart() {
-		return aeroportDepart;
-	}
-
-	public void setAeroportDepart(Aeroport aeroportDepart) {
-		this.aeroportDepart = aeroportDepart;
-	}
-
-	public List<Billet> getBillets() {
-		return this.billets;
-	}
-	
-	public void ajouterBillet(Billet billet) {
-		this.billets.add(billet);
-	}
-	
-	public List<CompagnieAerienneVol> getCompagnieAerienneVol() {
-		return this.compagnieAerienneVol;
-	}
-
-	public void ajouterCompagnieAerienneVol(CompagnieAerienneVol compagnieAerienneVol) {
-		this.compagnieAerienneVol.add(compagnieAerienneVol);
-	}
-	
-//	public void setCompagnieAerienneVol(List<CompagnieAerienneVol> compagnieAerienneVol) {
-//		this.compagnieAerienneVol = compagnieAerienneVol;
-//	}
-
-//	public void setBillets(List<Billet> billets) {
-//		this.billets = billets;
-//	}
 }
