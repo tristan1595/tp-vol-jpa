@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface ICompagnieAerienneRepository {
+import sopra.vol.model.CompagnieAerienne;
+
+public interface ICompagnieAerienneRepository extends IRepository<CompagnieAerienne, String> {
 
 }

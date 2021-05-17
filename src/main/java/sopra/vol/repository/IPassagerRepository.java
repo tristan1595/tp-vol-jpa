@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface IPassagerRepository {
+import sopra.vol.model.Passager;
+
+public interface IPassagerRepository extends IRepository<Passager, Long> {
 
 }

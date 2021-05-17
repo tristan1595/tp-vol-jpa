@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface IAeroportRepository {
+import sopra.vol.model.Aeroport;
+
+public interface IAeroportRepository extends IRepository<Aeroport, String> {
 
 }

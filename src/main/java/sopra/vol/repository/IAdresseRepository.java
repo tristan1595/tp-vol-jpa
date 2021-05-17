@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface IAdresseRepository {
+import sopra.vol.model.Adresse;
+
+public interface IAdresseRepository extends IRepository<Adresse, Long> {
 
 }

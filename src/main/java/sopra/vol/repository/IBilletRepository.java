@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface IBilletRepository {
+import sopra.vol.model.Billet;
+
+public interface IBilletRepository extends IRepository<Billet, Long> {
 
 }

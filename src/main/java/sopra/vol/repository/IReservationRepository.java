@@ -1,5 +1,7 @@
 package sopra.vol.repository;
 
-public interface IReservationRepository {
+import sopra.vol.model.Reservation;
+
+public interface IReservationRepository extends IRepository<Reservation, Integer> {
 
 }
