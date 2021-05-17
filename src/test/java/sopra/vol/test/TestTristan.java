@@ -102,18 +102,15 @@ public class TestTristan {
 		p3.setTypeIdentite(TypeIdentite.CARTE_IDENTITE);
 
 		// RESERVATIONS
-		Reservation resaP1 = new Reservation();
-		resaP1.setNumero(461865);
+		Reservation resaP1 = new Reservation(461865);
 		resaP1.setDtReservation(sdf.parse("25/06/2021"));
 		resaP1.setStatut(StatutReservation.CONFIRMER);
 
-		Reservation resaP2 = new Reservation();
-		resaP2.setNumero(985467);
+		Reservation resaP2 = new Reservation(985467);
 		resaP2.setDtReservation(sdf.parse("02/09/2021"));
 		resaP2.setStatut(StatutReservation.ANNULER);
 
-		Reservation resaP3 = new Reservation();
-		resaP3.setNumero(800012);
+		Reservation resaP3 = new Reservation(800012);
 		resaP3.setDtReservation(sdf.parse("13/01/2022"));
 		resaP3.setStatut(StatutReservation.CONFIRMER);
 
@@ -314,18 +311,18 @@ public class TestTristan {
 		BordeauxCDGRyanAir.setVol(bordeauxParisCDG);
 		BordeauxCDGRyanAir.setNumeroVol(bordeauxParisCDG.getId().toString());
 
-		List<Ville> villesDesservieAeroportBordeaux = aeroportRepo.findById(aeroportBordeaux.getCode()).getVilles();
-		List<Aeroport> aeroportDansBordeaux = villeRepo.findById(bordeaux.getId()).getAeroports();
-
-		System.out.println("VILLES DESSERVIES PAR L'AEROPORT DE BORDEAUX");
-		for (Ville v : villesDesservieAeroportBordeaux) {
-			System.out.println(v.getNom());
-		}
-
-		System.out.println("AEROPORT DESSERVIES PAR LA VILLE DE BORDEAUX");
-		for (Aeroport a : aeroportDansBordeaux) {
-			System.out.println(a.getNom());
-		}
+//		List<Ville> villesDesservieAeroportBordeaux = aeroportRepo.findById(aeroportBordeaux.getCode()).getVilles();
+//		List<Aeroport> aeroportDansBordeaux = villeRepo.findById(bordeaux.getId()).getAeroports();
+//
+//		System.out.println("VILLES DESSERVIES PAR L'AEROPORT DE BORDEAUX");
+//		for (Ville v : villesDesservieAeroportBordeaux) {
+//			System.out.println(v.getNom());
+//		}
+//
+//		System.out.println("AEROPORT DESSERVIES PAR LA VILLE DE BORDEAUX");
+//		for (Aeroport a : aeroportDansBordeaux) {
+//			System.out.println(a.getNom());
+//		}
 
 		
 	}

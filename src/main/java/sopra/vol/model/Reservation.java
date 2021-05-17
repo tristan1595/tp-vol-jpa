@@ -20,7 +20,6 @@ import javax.persistence.Table;
 @Table(name="Reservation")
 public class Reservation {
 	@Id
-	@GeneratedValue
 	private Integer numero;
 	@Column(name = "reservation_date")
 	private Date dtReservation;
@@ -38,6 +37,11 @@ public class Reservation {
 
 	public Reservation() {
 		super();
+	}
+	
+	public Reservation(Integer numero) {
+		super();
+		this.numero = numero;
 	}
 
 	public Reservation(Integer numero, Date dtReservation, StatutReservation statut) {
