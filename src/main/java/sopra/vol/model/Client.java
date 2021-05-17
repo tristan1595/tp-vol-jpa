@@ -12,67 +12,97 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 
 @Entity
-@Table(name = "customer")
+@Table(name="client")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+@DiscriminatorColumn(name="type")
 public abstract class Client {
+	
 	@Id
 	@GeneratedValue
-	private Long id;
-	@Column(name = "name")
-	private String nom;
+	private long id;
+	@Column(name="name", length=100)
+	private String name;
 	@OneToMany(mappedBy = "client")
-	private List<Adresse> adresses = new ArrayList<Adresse>();
+	private List<Adresse> adresses;
 	@OneToMany(mappedBy = "client")
-	private List<Reservation> reservations = new ArrayList<Reservation>();
-
+	private List<Reservation> reservations;
+	
 	public Client() {
 		super();
 	}
 
-	public Client(String nom) {
-		super();
-		this.nom = nom;
-	}
-	
-	public Client(Long id, String nom) {
-		super();
+	public Client(long id, String name) {
 		this.id = id;
-		this.nom = nom;
+		this.name = name;
+		adresses = new ArrayList<Adresse>();
+		reservations = new ArrayList<Reservation>();
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
-
+	
 	public List<Adresse> getAdresses() {
 		return adresses;
 	}
-
-	public void setAdresses(List<Adresse> adresses) {
-		this.adresses = adresses;
+	
+	public void ajouterAdresses(Adresse adresse) {
+		adresses.add(adresse);
 	}
-
+	
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
-
-	public void setReservations(List<Reservation> reservations) {
-		this.reservations = reservations;
+	
+	public void ajouterReservation(Reservation reservation) {
+		reservations.add(reservation);
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("##########################\n");
+		builder.append("### INFORMATION CLIENT ###\n");
+		builder.append("##########################\n");
+		builder.append("id = " + id + "\n");
+		builder.append("nom = " + name + "\n");
+		return builder.toString();
+	}
+	
+	public String adressesString() {
+		StringBuilder builder = new StringBuilder();
+		if(adresses.size() != 0) {
+			for(Adresse a : adresses) {
+				builder.append(a.toString());
+			}
+		}
+		else {
+			builder.append("Pas d'adresses associées\n");
+		}
+		return builder.toString();
+	}
+	
+//	public void setReservations(List<Reservation> reservations) {
+//		this.reservations = reservations;
+//	}
+	
+//	public void setAdresses(List<Adresse> adresses) {
+//	this.adresses = adresses;
+//}
 }

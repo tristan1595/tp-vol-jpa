@@ -9,24 +9,23 @@ import javax.persistence.Enumerated;
 @Entity
 @DiscriminatorValue("company")
 public class Entreprise extends Client {
-	@Column(name = "siret_number")
+	@Column(name="siret_number", length=100)
 	private String siret;
-	@Column(name = "tva_number")
-	private String numeroTVA;
+	@Column(name="tva_rate", length=100)
+	private String numeroTva;
+	@Column(name="legal_status", length=100)
 	@Enumerated(EnumType.STRING)
-	@Column(name = "legal_status")
 	private StatutJuridique statutJuridique;
-
+	
 	public Entreprise() {
 		super();
 	}
 	
-	public Entreprise(String nom) {
-		super(nom);
-	}
-
-	public Entreprise(Long id, String nom) {
-		super(id, nom);
+	public Entreprise(long id, String name, String siret, String numeroTva, StatutJuridique statutJuridique) {
+		super(id, name);
+		this.siret = siret;
+		this.numeroTva = numeroTva;
+		this.statutJuridique = statutJuridique;
 	}
 
 	public String getSiret() {
@@ -37,12 +36,12 @@ public class Entreprise extends Client {
 		this.siret = siret;
 	}
 
-	public String getNumeroTVA() {
-		return numeroTVA;
+	public String getNumeroTva() {
+		return numeroTva;
 	}
 
-	public void setNumeroTVA(String numeroTVA) {
-		this.numeroTVA = numeroTVA;
+	public void setNumeroTva(String numeroTva) {
+		this.numeroTva = numeroTva;
 	}
 
 	public StatutJuridique getStatutJuridique() {
@@ -53,4 +52,16 @@ public class Entreprise extends Client {
 		this.statutJuridique = statutJuridique;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(super.toString());
+		builder.append("Siret = " + siret + "\n");
+		builder.append("Numéro de TVA = " + numeroTva + "\n");
+		builder.append("Statut juridique = " + statutJuridique + "\n");
+		builder.append(super.adressesString());
+		return builder.toString();
+	}
+	
+	
 }
