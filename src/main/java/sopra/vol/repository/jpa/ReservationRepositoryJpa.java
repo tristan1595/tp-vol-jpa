@@ -1,5 +1,34 @@
 package sopra.vol.repository.jpa;
 
-public class ReservationRepositoryJpa {
+import java.util.List;
+
+import sopra.vol.model.Reservation;
+import sopra.vol.repository.IReservationRepository;
+
+public class ReservationRepositoryJpa implements IReservationRepository {
+
+	@Override
+	public List<Reservation> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Reservation findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Reservation save(Reservation obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Reservation obj) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
