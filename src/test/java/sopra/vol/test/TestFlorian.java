@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.PersistenceException;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,6 +40,8 @@ public class TestFlorian {
 		
 		Assert.assertEquals(date, resaFind.getDtReservation());
 		Assert.assertEquals(StatutReservation.CONFIRMER, resaFind.getStatut());
+		
+		reservationRepo.delete(resaP1);
 	}
 	
 	@Test
@@ -85,8 +85,6 @@ public class TestFlorian {
 		resaP3.setDtReservation(date3);
 		resaP3.setStatut(StatutReservation.CONFIRMER);
 		
-		
-	
 		resaP1 = reservationRepo.save(resaP1);
 		resaP2 = reservationRepo.save(resaP2);
 		resaP3 = reservationRepo.save(resaP3);
@@ -104,5 +102,9 @@ public class TestFlorian {
 		Assert.assertEquals((Integer) 800012, resaFind.get(1).getNumero());
 		Assert.assertEquals(date3, resaFind.get(1).getDtReservation());
 		Assert.assertEquals(StatutReservation.CONFIRMER, resaFind.get(1).getStatut());
+		
+		reservationRepo.delete(resaP1);
+		reservationRepo.delete(resaP2);
+		reservationRepo.delete(resaP3);
 	}
 }
