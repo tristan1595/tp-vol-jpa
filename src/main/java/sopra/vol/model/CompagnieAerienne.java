@@ -18,17 +18,16 @@ public class CompagnieAerienne {
 	@Column(name = "name")
 	private String nom;
 	@OneToMany(mappedBy = "compagnieAerienne")
-	private List<CompagnieAerienneVol> compagnieAerienneVol;
+	private List<CompagnieAerienneVol> vols = new ArrayList<CompagnieAerienneVol>();
 	
 	public CompagnieAerienne() {
-		this(null, null);
+		super();
 	}
 
 	public CompagnieAerienne(String code, String nom) {
 		super();
 		this.code = code;
 		this.nom = nom;
-		compagnieAerienneVol = new ArrayList<CompagnieAerienneVol>();
 	}
 
 	public String getCode() {
@@ -39,23 +38,21 @@ public class CompagnieAerienne {
 		this.code = code;
 	}
 
-	public String getName() {
+	public String getNom() {
 		return nom;
 	}
 
-	public void setName(String name) {
-		this.nom = name;
-	}	
-	
-	public List<CompagnieAerienneVol> getCompagnieAerienneVol() {
-		return this.compagnieAerienneVol;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	
-	public void ajouterCompagnieAerienneVol(CompagnieAerienneVol compagnieAerienneVol) {
-		this.compagnieAerienneVol.add(compagnieAerienneVol);
+
+	public List<CompagnieAerienneVol> getVols() {
+		return vols;
 	}
+
+	public void setVols(List<CompagnieAerienneVol> vols) {
+		this.vols = vols;
+	}
+
 	
-//	public void setCompagnieAerienneVol(List<CompagnieAerienneVol> compagnieAerienneVol) {
-//		this.compagnieAerienneVol = compagnieAerienneVol;
-//  }
 }

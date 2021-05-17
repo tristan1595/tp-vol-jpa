@@ -1,31 +1,60 @@
 package sopra.vol.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ticket")
 public class Billet {
-	private long id;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Column(name="seat_number")
 	private String numeroPlace;
+	@Column(name="class")
 	private String classe;
+	@Column(name="price")
 	private float prix;
+	@Column(name="ranking")
+	private int ordre;
+	@ManyToOne
+	@JoinColumn(name="numero_reservation")
 	private Reservation reservation;
+	@ManyToOne
+	@JoinColumn(name="id_vol")
 	private Vol vol;
-	
+
 	public Billet() {
-		this(0, null, null, 0.0f, null, null);
+		super();
 	}
-	
-	public Billet(long id, String numeroPlace, String classe, float prix, Reservation reservation, Vol vol) {
+
+	public Billet(String numeroPlace, String classe, float prix, int ordre) {
+		super();
+		this.numeroPlace = numeroPlace;
+		this.classe = classe;
+		this.prix = prix;
+		this.ordre = ordre;
+	}
+
+	public Billet(Long id, String numeroPlace, String classe, float prix, int ordre) {
+		super();
 		this.id = id;
 		this.numeroPlace = numeroPlace;
 		this.classe = classe;
 		this.prix = prix;
-		this.reservation = reservation;
-		this.vol = vol;
+		this.ordre = ordre;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,6 +82,14 @@ public class Billet {
 		this.prix = prix;
 	}
 
+	public int getOrdre() {
+		return ordre;
+	}
+
+	public void setOrdre(int ordre) {
+		this.ordre = ordre;
+	}
+
 	public Reservation getReservation() {
 		return reservation;
 	}
@@ -68,4 +105,5 @@ public class Billet {
 	public void setVol(Vol vol) {
 		this.vol = vol;
 	}
+
 }

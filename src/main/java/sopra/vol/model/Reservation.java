@@ -4,32 +4,54 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Reservation")
 public class Reservation {
-	private int numero;
+	@Id
+	@GeneratedValue
+	private Integer numero;
+	@Column(name = "reservation_date")
 	private Date dtReservation;
-	private StatutReservation confirme;
-	private Passager passager;
-	private List<Billet> billets;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "reservation_state")
+	private StatutReservation statut;
+	@ManyToOne
+	@JoinColumn(name="id_customer")
 	private Client client;
-	
+	@OneToOne
+	@JoinColumn(name="id_passenger")
+	private Passager passager;
+	@OneToMany(mappedBy="reservation")
+	private List<Billet> billets = new ArrayList<>();
+
 	public Reservation() {
-		this(0, null, null, null, null);
+		super();
 	}
 
-	public Reservation(int numero, Date dtReservation, StatutReservation confirme, Passager passager, Client client) {
+	public Reservation(Integer numero, Date dtReservation, StatutReservation statut) {
+		super();
 		this.numero = numero;
 		this.dtReservation = dtReservation;
-		this.confirme = confirme;
-		this.passager = passager;
-		this.billets = new ArrayList<Billet>();
-		this.client = client;
+		this.statut = statut;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
@@ -41,30 +63,14 @@ public class Reservation {
 		this.dtReservation = dtReservation;
 	}
 
-	public StatutReservation getConfirme() {
-		return confirme;
+	public StatutReservation getStatut() {
+		return statut;
 	}
 
-	public void setConfirme(StatutReservation confirme) {
-		this.confirme = confirme;
-	}
-	
-	public Passager getPassager() {
-		return passager;
+	public void setStatut(StatutReservation statut) {
+		this.statut = statut;
 	}
 
-	public void setPassager(Passager passager) {
-		this.passager = passager;
-	}
-	
-	public List<Billet> getBillets() {
-		return billets;
-	}
-	
-	public void ajouterBillet(Billet billet) {
-		billets.add(billet);
-	}
-	
 	public Client getClient() {
 		return client;
 	}
@@ -73,31 +79,20 @@ public class Reservation {
 		this.client = client;
 	}
 
-	public float prixTotal() {
-		float prixTot = 0;
-		for(Billet b : billets) {
-			prixTot += b.getPrix();
-		}
-		return prixTot;
+	public Passager getPassager() {
+		return passager;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("###############################\n");
-		builder.append("### INFORMATION RESERVATION ###\n");
-		builder.append("###############################\n");
-		builder.append("numero = " + numero + "\n");
-		builder.append("Date de réservation = " + dtReservation + "\n");
-		builder.append("Statue réservation = " + confirme + "\n");
-		builder.append(client.toString());
-		builder.append(passager.toString());
-		return builder.toString();
+	public void setPassager(Passager passager) {
+		this.passager = passager;
 	}
-	
-	
-	
-//	public void setVols(List<Vol> vols) {
-//		this.vols = vols;
-//	}
+
+	public List<Billet> getBillets() {
+		return billets;
+	}
+
+	public void setBillets(List<Billet> billets) {
+		this.billets = billets;
+	}
+
 }

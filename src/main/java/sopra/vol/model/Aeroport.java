@@ -24,55 +24,37 @@ public class Aeroport {
 	private List<Ville> villes; 
 	
 	public Aeroport() {
-		this(null, null);
+		super();
 	}
 
-	public Aeroport(String code, String name) {
+	public Aeroport(String code, String nom) {
+		super();
 		this.code = code;
-		this.nom = name;
-		villes = new ArrayList<Ville>();
+		this.nom = nom;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}
-	
+
 	public void setCode(String code) {
 		this.code = code;
 	}
 
-	public String getName() {
+	public String getNom() {
 		return nom;
 	}
-	
-	public void setName(String name) {
-		this.nom = name;
-	}
-	
-	public List<Ville> getVilles() {
-		return this.villes;
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-//	public void setVilles(List<Ville> villes) {
-//		this.villes = villes;
-//	}
-	
-	public void ajouterVille(Ville ville) {
-		this.villes.add(ville);
+	public List<Ville> getVilles() {
+		return villes;
+	}
+
+	public void setVilles(List<Ville> villes) {
+		this.villes = villes;
 	}
 	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Aeroport : code = " + code + ", nom = " + nom + "\n");
-		builder.append("Villes desservies : \n");
-		int i = 0;
-		for(Ville v : villes) {
-			builder.append("Ville n°" + (i+1) + " " + v.getName());
-			builder.append("\n");
-			i++;
-		}
-		
-		return builder.toString();
-	}
 }

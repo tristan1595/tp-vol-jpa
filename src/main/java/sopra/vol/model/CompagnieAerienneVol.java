@@ -24,21 +24,25 @@ public class CompagnieAerienneVol {
 	private Vol vol;
 
 	public CompagnieAerienneVol() {
-		this(0, null, null, null);
+		super();
 	}
 	
-	public CompagnieAerienneVol(long id, String numeroVol,CompagnieAerienne compagnieAerienne, Vol vol) {
-		this.id = id;
+	public CompagnieAerienneVol(String numeroVol) {
+		super();
 		this.numeroVol = numeroVol;
-		this.compagnieAerienne = compagnieAerienne;
-		this.vol = vol;
 	}
 
-	public long getId() {
+	public CompagnieAerienneVol(Long id, String numeroVol) {
+		super();
+		this.id = id;
+		this.numeroVol = numeroVol;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -49,7 +53,7 @@ public class CompagnieAerienneVol {
 	public void setNumeroVol(String numeroVol) {
 		this.numeroVol = numeroVol;
 	}
-	
+
 	public CompagnieAerienne getCompagnieAerienne() {
 		return compagnieAerienne;
 	}
@@ -65,4 +69,5 @@ public class CompagnieAerienneVol {
 	public void setVol(Vol vol) {
 		this.vol = vol;
 	}
+	
 }

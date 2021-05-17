@@ -12,7 +12,7 @@ public class Entreprise extends Client {
 	@Column(name="siret_number", length=100)
 	private String siret;
 	@Column(name="tva_rate", length=100)
-	private String numeroTva;
+	private String numeroTVA;
 	@Column(name="legal_status", length=100)
 	@Enumerated(EnumType.STRING)
 	private StatutJuridique statutJuridique;
@@ -21,11 +21,12 @@ public class Entreprise extends Client {
 		super();
 	}
 	
-	public Entreprise(long id, String name, String siret, String numeroTva, StatutJuridique statutJuridique) {
-		super(id, name);
-		this.siret = siret;
-		this.numeroTva = numeroTva;
-		this.statutJuridique = statutJuridique;
+	public Entreprise(String nom) {
+		super();
+	}
+
+	public Entreprise(Long id, String nom) {
+		super(id, nom);
 	}
 
 	public String getSiret() {
@@ -36,12 +37,12 @@ public class Entreprise extends Client {
 		this.siret = siret;
 	}
 
-	public String getNumeroTva() {
-		return numeroTva;
+	public String getNumeroTVA() {
+		return numeroTVA;
 	}
 
-	public void setNumeroTva(String numeroTva) {
-		this.numeroTva = numeroTva;
+	public void setNumeroTVA(String numeroTVA) {
+		this.numeroTVA = numeroTVA;
 	}
 
 	public StatutJuridique getStatutJuridique() {
@@ -51,17 +52,5 @@ public class Entreprise extends Client {
 	public void setStatutJuridique(StatutJuridique statutJuridique) {
 		this.statutJuridique = statutJuridique;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(super.toString());
-		builder.append("Siret = " + siret + "\n");
-		builder.append("Numéro de TVA = " + numeroTva + "\n");
-		builder.append("Statut juridique = " + statutJuridique + "\n");
-		builder.append(super.adressesString());
-		return builder.toString();
-	}
-	
 	
 }

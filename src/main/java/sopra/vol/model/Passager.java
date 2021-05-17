@@ -1,32 +1,77 @@
 package sopra.vol.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="passenger")
 public class Passager {
-	private long id;
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Column(name="last_name")
 	private String nom;
+	@Column(name="first_name")
 	private String prenom;
+	@Column(name="identity_number")
 	private String numeroIdentite;
+	@Enumerated(EnumType.STRING)
+	@Column(name="identity_type")
 	private TypeIdentite typeIdentite;
+	@OneToOne
+	@JoinColumn(name="numero")
 	private Reservation reservation;
 
 	public Passager() {
-		this(0, null, null, null, null, null);
+		super();
 	}
 	
-	public Passager(long id, String nom, String prenom, String numeroIdentite, TypeIdentite typeIdentite, Reservation reservation) {
+	public Passager(String nom, String prenom, String numeroIdentite, TypeIdentite typeIdentite) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.numeroIdentite = numeroIdentite;
+		this.typeIdentite = typeIdentite;
+	}
+
+	public Passager(Long id, String nom, String prenom, String numeroIdentite, TypeIdentite typeIdentite) {
+		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.numeroIdentite = numeroIdentite;
 		this.typeIdentite = typeIdentite;
-		this.reservation = reservation;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNumeroIdentite() {
+		return numeroIdentite;
+	}
+
+	public void setNumeroIdentite(String numeroIdentite) {
+		this.numeroIdentite = numeroIdentite;
+	}
+
+	public TypeIdentite getTypeIdentite() {
+		return typeIdentite;
+	}
+
+	public void setTypeIdentite(TypeIdentite typeIdentite) {
+		this.typeIdentite = typeIdentite;
 	}
 
 	public String getNom() {
@@ -45,22 +90,6 @@ public class Passager {
 		this.prenom = prenom;
 	}
 
-	public String getNumeroIdentite() {
-		return numeroIdentite;
-	}
-
-	public void setNumeroIdentite(String numeroIdentite) {
-		this.numeroIdentite = numeroIdentite;
-	}
-
-	public TypeIdentite getTypeIdentite() {
-		return typeIdentite;
-	}
-
-	public void setTypeIdentite(TypeIdentite typeIdentite) {
-		this.typeIdentite = typeIdentite;
-	}
-	
 	public Reservation getReservation() {
 		return reservation;
 	}
@@ -68,16 +97,5 @@ public class Passager {
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("### Passager \n");
-		builder.append("id = " + id + "\n");
-		builder.append("nom = " + nom + "\n");
-		builder.append("prenom = " + prenom + "\n");
-		builder.append("Numéro d'identité = " + numeroIdentite + "\n");
-		builder.append("Type d'identité = " + typeIdentite + "\n");
-		return builder.toString();
-	}
+	
 }
