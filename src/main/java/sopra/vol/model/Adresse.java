@@ -1,56 +1,33 @@
 package sopra.vol.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "adress")
 public class Adresse {
-	@Id
-	@GeneratedValue
-	private Long id;
-	@Column(name = "street")
+	private long id;
 	private String rue;
-	@Column(name = "supplement")
 	private String complement;
-	@Column(name = "postal_code")
 	private String codePostal;
-	@Column(name = "city")
 	private String ville;
-	@Column(name = "country")
 	private String pays;
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
 	private Client client;
-
+	
 	public Adresse() {
-		super();
+		this(0, null, null, null, null, null, null);
 	}
-
-	public Adresse(String rue, String complement, String codePostal, String ville, String pays) {
-		this(null, rue, complement, codePostal, ville, pays);
-	}
-
-	public Adresse(Long id, String rue, String complement, String codePostal, String ville, String pays) {
-		super();
+	
+	public Adresse(long id, String rue, String complement, String codePostal, String ville, String pays, Client client) {
 		this.id = id;
 		this.rue = rue;
 		this.complement = complement;
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.pays = pays;
+		this.client = client;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -102,4 +79,18 @@ public class Adresse {
 		this.client = client;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("### adresse ### \n");
+		builder.append("id = " + id + "\n" );
+		builder.append("rue = " + rue + "\n");
+		if(complement != null) {
+			builder.append("complement = " + complement + "\n");
+		}
+		builder.append("codePostal = " + codePostal + "\n");
+		builder.append("ville = " + ville + "\n");
+		builder.append("pays = " + pays + "\n");
+		return builder.toString();
+	}
 }
