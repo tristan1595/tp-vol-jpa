@@ -21,10 +21,15 @@ public class Aeroport {
 	private String nom;
 	@ManyToMany
 	@JoinTable(name = "destinations", joinColumns = @JoinColumn(name = "airport_code"), inverseJoinColumns = @JoinColumn(name = "city_id"))
-	private List<Ville> villes; 
+	private List<Ville> villes = new ArrayList<Ville>(); 
 	
 	public Aeroport() {
 		super();
+	}
+	
+	public Aeroport(String code) {
+		super();
+		this.code = code;
 	}
 
 	public Aeroport(String code, String nom) {
