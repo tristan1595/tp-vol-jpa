@@ -35,11 +35,7 @@ public class TestSeif {
 		
 		tristan = (Particulier) clientRepo.save(tristan);
 		sopraSteria = (Entreprise) clientRepo.save(sopraSteria);
-//		try {
-//			tristan = (Particulier) clientRepo.save(tristan);
-//			Assert.fail("Vérification commentaires obligatoire en erreur");
-//		} catch(PersistenceException e) {
-//		}
+
 		Particulier tristanFind = (Particulier) clientRepo.findById(tristan.getId());
 		Assert.assertEquals("Poul", tristanFind.getName());
 		Assert.assertEquals("Tristan", tristanFind.getPrenom());
@@ -50,11 +46,12 @@ public class TestSeif {
 		Assert.assertEquals("FR18326820065", sopraFind.getNumeroTVA());
 		Assert.assertEquals(StatutJuridique.SA, sopraFind.getStatutJuridique());
 		
-		
 		clientRepo.delete(tristan);
-		clientRepo.delete(sopraSteria);
+		clientRepo.delete(sopraSteria);	
 		
+		List<Client> clients2 = clientRepo.findAll();
 		
+		Assert.assertEquals(0, clients2.size());
 	}
 	@Test
 	public void clientUpdate() {
@@ -96,7 +93,10 @@ public class TestSeif {
 		
 		clientRepo.delete(tristan);
 		clientRepo.delete(sopraSteria);
-
+		
+		List<Client> clients2 = clientRepo.findAll();
+		
+		Assert.assertEquals(0, clients2.size());
 	}
 	
 	
@@ -132,9 +132,10 @@ public class TestSeif {
 		
 		List<Client> clients = clientRepo.findAll();
 		
-		clientRepo.delete(seif);
+		
 		Assert.assertEquals(4, clients.size());
 		
+		clientRepo.delete(seif);
 		clientRepo.delete(tristan);
 		clientRepo.delete(sopraSteria);
 		clientRepo.delete(gainax);

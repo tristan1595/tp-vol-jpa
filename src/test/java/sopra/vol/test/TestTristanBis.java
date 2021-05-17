@@ -45,6 +45,7 @@ public class TestTristanBis {
 		Assert.assertEquals(tristan.getId(), adresseFind.getClient().getId());
 		
 		adresseRepo.delete(adresse);
+		clientRepo.delete(tristan);
 	}
 	
 	@Test
@@ -88,6 +89,7 @@ public class TestTristanBis {
 		Assert.assertEquals(tristan.getId(), adresseFind.getClient().getId());
 		
 		adresseRepo.delete(adresse);
+		clientRepo.delete(tristan);
 	}
 	
 	@Test
