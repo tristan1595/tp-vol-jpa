@@ -13,25 +13,22 @@ import javax.persistence.Table;
 @Table(name = "airline_company")
 public class CompagnieAerienne {
 	@Id
+	@Column(name = "code")
 	private String code;
 	@Column(name = "name")
 	private String nom;
 	@OneToMany(mappedBy = "compagnieAerienne")
-	private List<CompagnieAerienneVol> vols = new ArrayList<CompagnieAerienneVol>();
-
-	public CompagnieAerienne() {
-		super();
-	}
+	private List<CompagnieAerienneVol> compagnieAerienneVol;
 	
-	public CompagnieAerienne(String code) {
-		super();
-		this.code = code;
+	public CompagnieAerienne() {
+		this(null, null);
 	}
 
 	public CompagnieAerienne(String code, String nom) {
 		super();
 		this.code = code;
 		this.nom = nom;
+		compagnieAerienneVol = new ArrayList<CompagnieAerienneVol>();
 	}
 
 	public String getCode() {
@@ -42,20 +39,23 @@ public class CompagnieAerienne {
 		this.code = code;
 	}
 
-	public String getNom() {
+	public String getName() {
 		return nom;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.nom = name;
+	}	
+	
+	public List<CompagnieAerienneVol> getCompagnieAerienneVol() {
+		return this.compagnieAerienneVol;
 	}
-
-	public List<CompagnieAerienneVol> getVols() {
-		return vols;
+	
+	public void ajouterCompagnieAerienneVol(CompagnieAerienneVol compagnieAerienneVol) {
+		this.compagnieAerienneVol.add(compagnieAerienneVol);
 	}
-
-	public void setVols(List<CompagnieAerienneVol> vols) {
-		this.vols = vols;
-	}
-
+	
+//	public void setCompagnieAerienneVol(List<CompagnieAerienneVol> compagnieAerienneVol) {
+//		this.compagnieAerienneVol = compagnieAerienneVol;
+//  }
 }
