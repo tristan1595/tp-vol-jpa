@@ -19,16 +19,4 @@ public class BilletRepositoryJpa implements IBilletRepository {
 		return null;
 	}
 
-	@Override
-	public Billet save(Billet obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Billet obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -19,16 +19,4 @@ public class VolRepositoryJpa implements IVolRepository {
 		return null;
 	}
 
-	@Override
-	public Vol save(Vol obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Vol obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
