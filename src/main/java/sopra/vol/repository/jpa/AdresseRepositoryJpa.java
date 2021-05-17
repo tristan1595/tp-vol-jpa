@@ -18,17 +18,4 @@ public class AdresseRepositoryJpa implements IAdresseRepository {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Adresse save(Adresse obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Adresse obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

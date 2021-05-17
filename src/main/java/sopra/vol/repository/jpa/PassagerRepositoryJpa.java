@@ -19,16 +19,4 @@ public class PassagerRepositoryJpa implements IPassagerRepository {
 		return null;
 	}
 
-	@Override
-	public Passager save(Passager obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Passager obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

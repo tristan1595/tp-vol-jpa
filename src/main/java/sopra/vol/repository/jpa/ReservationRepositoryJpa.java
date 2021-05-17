@@ -19,16 +19,4 @@ public class ReservationRepositoryJpa implements IReservationRepository {
 		return null;
 	}
 
-	@Override
-	public Reservation save(Reservation obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Reservation obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

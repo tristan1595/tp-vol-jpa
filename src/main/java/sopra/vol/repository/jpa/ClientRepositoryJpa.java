@@ -19,16 +19,4 @@ public class ClientRepositoryJpa implements IClientRepository {
 		return null;
 	}
 
-	@Override
-	public Client save(Client obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Client obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
