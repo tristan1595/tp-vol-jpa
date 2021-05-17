@@ -15,6 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import sopra.vol.model.Aeroport;
+import sopra.vol.model.Billet;
+import sopra.vol.model.CompagnieAerienneVol;
+import sopra.vol.model.StatutVol;
+
 @Entity
 @Table(name="flight")
 public class Vol {
