@@ -19,7 +19,7 @@ public class Ville {
 	@Column(name = "name")
 	private String nom;
 	@ManyToMany(mappedBy = "villes")
-	private List<Aeroport> aeroports;
+	private List<Aeroport> aeroports = new ArrayList<Aeroport>();
 	
 	public Ville() {
 		super();
