@@ -3,14 +3,36 @@ package sopra.vol.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+
+@Entity
+@Table(name="client")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type")
 public abstract class Client {
+	
+	@Id
+	@GeneratedValue
 	private long id;
+	@Column(name="name", length=100)
 	private String name;
+	@OneToMany(mappedBy = "client")
 	private List<Adresse> adresses;
+	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations;
 	
 	public Client() {
-		this(0, null);
+		super();
 	}
 
 	public Client(long id, String name) {
