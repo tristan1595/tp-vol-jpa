@@ -1,12 +1,31 @@
 package sopra.vol.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="adress")
 public class Adresse {
+	@Id
+	@GeneratedValue
 	private long id;
+	@Column(name="street", length=100)
 	private String rue;
+	@Column(name="additional_details", length=100)
 	private String complement;
+	@Column(name="postal_code", length=10)
 	private String codePostal;
+	@Column(name="city", length=100)
 	private String ville;
+	@Column(name="country", length=100)
 	private String pays;
+	@ManyToOne
+	@JoinColumn(name="client_id")
 	private Client client;
 	
 	public Adresse() {
