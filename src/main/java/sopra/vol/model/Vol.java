@@ -16,7 +16,7 @@ public class Vol {
 	@GeneratedValue
 	private long id;
 	private Date dtDepart;
-	private Date dtArrivee;
+	private Date dtArrivee; 
 	private StatutVol statutVol;
 	private int nbPlaceDispo;
 	private Aeroport aeroportArrivee;
