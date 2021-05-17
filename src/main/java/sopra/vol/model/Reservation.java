@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="Reservation")
 public class Reservation {
 	@Id
-	@GeneratedValue
+	@Column(name = "number")
 	private Integer numero;
 	@Column(name = "reservation_date")
 	private Date dtReservation;
@@ -34,7 +34,7 @@ public class Reservation {
 	@JoinColumn(name="id_passenger")
 	private Passager passager;
 	@OneToMany(mappedBy="reservation")
-	private List<Billet> billets = new ArrayList<>();
+	private List<Billet> billets = new ArrayList<Billet>();
 
 	public Reservation() {
 		super();
