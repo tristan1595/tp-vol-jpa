@@ -19,16 +19,4 @@ public class VilleRepositoryJpa implements IVilleRepository {
 		return null;
 	}
 
-	@Override
-	public Ville save(Ville obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Ville obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

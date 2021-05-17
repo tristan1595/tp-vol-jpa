@@ -19,16 +19,4 @@ public class AeroportRepositoryJpa implements IAeroportRepository {
 		return null;
 	}
 
-	@Override
-	public Aeroport save(Aeroport obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(Aeroport obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
