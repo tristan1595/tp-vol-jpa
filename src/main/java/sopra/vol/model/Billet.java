@@ -20,13 +20,13 @@ public class Billet {
 	private String classe;
 	@Column(name="price")
 	private float prix;
-	@Column(name="order")
+	@Column(name="ranking")
 	private int ordre;
 	@ManyToOne
-	@JoinColumn(name="numero")
+	@JoinColumn(name="numero_reservation")
 	private Reservation reservation;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="id_vol")
 	private Vol vol;
 
 	public Billet() {

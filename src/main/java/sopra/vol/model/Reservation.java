@@ -25,13 +25,13 @@ public class Reservation {
 	@Column(name = "reservation_date")
 	private Date dtReservation;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "reservation-state")
+	@Column(name = "reservation_state")
 	private StatutReservation statut;
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="id_customer")
 	private Client client;
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="id_passenger")
 	private Passager passager;
 	@OneToMany(mappedBy="reservation")
 	private List<Billet> billets = new ArrayList<>();
