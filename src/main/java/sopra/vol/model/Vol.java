@@ -15,7 +15,7 @@ public class Vol {
 	@Id
 	@GeneratedValue
 	private long id;
-	private Date dtDepart;
+	private Date dtDepart; 
 	private Date dtArrivee; 
 	private StatutVol statutVol;
 	private int nbPlaceDispo;
