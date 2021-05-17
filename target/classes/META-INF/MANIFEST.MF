@@ -1,13 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-<<<<<<< HEAD
-Built-By: Tristan
-=======
-Built-By: Flo
->>>>>>> Florian
-=======
-Built-By: seifb
->>>>>>> Seif
+Built-By: Gabriￃﾫl
 Build-Jdk: 15.0.2
 Created-By: Maven Integration for Eclipse
 
