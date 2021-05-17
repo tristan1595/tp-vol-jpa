@@ -12,5 +12,4 @@ public class TestTristan {
 		emf.close();
 		
 	}
-
 }
