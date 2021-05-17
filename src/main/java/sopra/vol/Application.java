@@ -27,7 +27,7 @@ import sopra.vol.repository.jpa.VolRepositoryJpa;
 public class Application {
 	private static Application instance = null;
 	
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("vol-jpa");
+	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("tp-vol-jpa");
 	
 	private final IAdresseRepository adresseRepo = new AdresseRepositoryJpa();
 	private final IAeroportRepository aeroportRepo = new AeroportRepositoryJpa();
