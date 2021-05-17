@@ -18,17 +18,5 @@ public class CompagnieAerienneVolRepositoryJpa implements ICompagnieAerienneVolR
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public CompagnieAerienneVol save(CompagnieAerienneVol obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void delete(CompagnieAerienneVol obj) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }
