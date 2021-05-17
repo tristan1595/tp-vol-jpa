@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "flight")
 public class Vol {
+	@Id
+	@GeneratedValue
 	private long id;
 	private Date dtDepart;
 	private Date dtArrivee;

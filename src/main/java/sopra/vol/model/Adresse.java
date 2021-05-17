@@ -10,7 +10,7 @@ public class Adresse {
 	private Client client;
 	
 	public Adresse() {
-		this(0, null, null, null, null, null, null);
+		super();
 	}
 	
 	public Adresse(long id, String rue, String complement, String codePostal, String ville, String pays, Client client) {
